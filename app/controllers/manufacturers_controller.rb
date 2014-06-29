@@ -20,7 +20,8 @@ class ManufacturersController < ApplicationController
       redirect_to manufacturer_path(@manufacturer)
     else
       flash[:notice] = "Manufacturer couldn't be saved."
-      render :'manufacturers/index'
+      redirect_to manufacturers_path
+    end
   end
 
   private

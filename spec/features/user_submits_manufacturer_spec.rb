@@ -10,6 +10,7 @@ feature 'User submits a new manufacturer' do
 
     click_button 'Submit'
 
+    expect(page).to have_content("Your manufacturer has been saved.")
     expect(page).to have_content('Lamborghini')
     expect(page).to have_content('Italy')
 

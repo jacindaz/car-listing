@@ -18,6 +18,6 @@
   <%= f.select :year, (1920..2014).to_a.reverse, include_blank: "Select a Year" %>
   <%= f.input :mileage %>
   <%= f.input :description, placeholder: "Describe your car" %>
-  <%= f.submit %>
+  <%= f.button :submit %>
 
 <% end %>
