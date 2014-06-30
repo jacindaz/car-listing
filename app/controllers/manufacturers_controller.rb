@@ -13,7 +13,6 @@ class ManufacturersController < ApplicationController
 
   def new
     @manufacturer = Manufacturer.new
-    @countries = Manufacturer::COUNTRIES
   end
 
   def create

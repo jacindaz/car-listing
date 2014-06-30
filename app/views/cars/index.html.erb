@@ -1,1 +1,21 @@
-<h3><%= @title %></h3>
+<h3>View all Cars</h3>
+
+<table class="table table-striped">
+  <th><h4>Manufacturer</h4></th>
+  <th><h4>Year</h4></th>
+  <th><h4>Color</h4></th>
+  <th><h4>Mileage</h4></th>
+  <th><h4>Description</h4></th>
+  <% @cars.each do |car| %>
+    <tr>
+      <td>
+        <% manufacturer = Manufacturer.find_by_id(car.manufacturer_id) %>
+        <%= link_to manufacturer.name, manufacturer_path(manufacturer) %>
+      </td>
+      <td><%= car.year %></td>
+      <td><%= car.color %></td>
+      <td><%= car.mileage %></td>
+      <td><%= car.description %></td>
+    </tr>
+  <% end %>
+</table>

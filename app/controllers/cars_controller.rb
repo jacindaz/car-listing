@@ -2,7 +2,8 @@ class CarsController < ApplicationController
 
   def index
     @cars = Car.all
-    @title = "So many Cars"
+    @manufacturers = Manufacturer.all
+    @title = "Much Cars"
   end
 
   def show
@@ -12,21 +13,14 @@ class CarsController < ApplicationController
 
   def new
     @manufacturer = Manufacturer.new
-
-
-
-    @manufacturer_names = []
-
-    Manufacturer.all.each do |manufac|
-      @manufacturer_names << manufac.name
-    end
-
     @car = Car.new
     @title = "Submit a New Car"
   end
 
   def create
     @car = Car.new(car_params)
+    manufacturer = Manufacturer.find(params[:manufacturer_id])
+    @car.manufacturer = manufacturer
 
     if @car.save
       flash[:notice] = "Car much submitted."
