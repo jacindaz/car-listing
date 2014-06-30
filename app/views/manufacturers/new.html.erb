@@ -3,11 +3,9 @@
 <%= simple_form_for(@manufacturer) do |f| %>
 
   <% if @manufacturer.errors.any? %>
-    <ul>
       <% @manufacturer.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <br><h5 style="color:red;"><%= msg %></h5><br>
       <% end %>
-    </ul>
   <% end %>
 
   <%= f.input :name %>
