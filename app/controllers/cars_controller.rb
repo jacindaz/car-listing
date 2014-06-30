@@ -12,29 +12,27 @@ class CarsController < ApplicationController
   end
 
   def new
-    @manufacturer = Manufacturer.new
     @car = Car.new
     @title = "Submit a New Car"
   end
 
   def create
-    binding.pry
     @car = Car.new(car_params)
     @manufacturer = Manufacturer.find(params[:manufacturer_id])
     @car.manufacturer = @manufacturer
 
     if @car.save
       flash[:notice] = "Car much submitted."
-      redirect_to car_path(@car)
+      redirect_to manufacturer_path(@car.manufacturer)
     else
-      flash[:notice] = "Much sorry, car very unsaveable."
+      flash.now[:notice] = "Much sorry, car very unsaveable."
       render :'manufacturers/show'
     end
   end
 
   private
   def car_params
-    params.require(:car).permit(:manufacturer_id, :color, :year, :mileage, :description)
+    params.require(:car).permit(:color, :year, :mileage, :description)
   end
 
 end

@@ -35,20 +35,12 @@
 
 <h3>Submit a new Car</h3>
 
-<%= simple_form_for [@manufacturer, @car] do |f| %>
-
-  <% if @car.errors.any? %>
-    <ul>
-      <% @car.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  <% end %>
+<%= simple_form_for([@manufacturer, @car]) do |f| %>
 
   <%= f.input :color %>
-  <%= f.select :year, (1920..2014).to_a.reverse, include_blank: "Select a Year" %>
+  <%= f.input :year, collection: (1920..2014).to_a.reverse, prompt: "Select a Year" %>
   <%= f.input :mileage %>
-  <%= f.input :description, placeholder: "Describe your car" %>
-  <%= f.button :submit %>
+  <%= f.input :description, placeholder: "Describe your car", required: false %>
+  <%= f.button :submit, "Submit Car" %>
 
 <% end %>

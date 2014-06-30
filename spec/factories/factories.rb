@@ -11,6 +11,6 @@ FactoryGirl.define do
     color "purple"
     year "1923"
     mileage 100
-    description "it is purple"
+    description "it is purple, this is a wonderful description"
   end
 end

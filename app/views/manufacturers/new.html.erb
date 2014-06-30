@@ -2,15 +2,8 @@
 
 <%= simple_form_for(@manufacturer) do |f| %>
 
-  <% if @manufacturer.errors.any? %>
-      <% @manufacturer.errors.full_messages.each do |msg| %>
-        <br><h5 style="color:red;"><%= msg %></h5><br>
-      <% end %>
-  <% end %>
-
   <%= f.input :name %>
-  <%= f.label :country %>
-  <%= f.select :country, Manufacturer::COUNTRIES %><br>
+  <%= f.input :country, collection: Manufacturer::COUNTRIES, prompt: "Select a country" %><br>
   <%= f.button :submit %>
 
 <% end %>
