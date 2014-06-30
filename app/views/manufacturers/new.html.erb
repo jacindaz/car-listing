@@ -1,4 +1,4 @@
-<h3>Submit a new Car Manufacturer</h3>
+<h3>Submit a new Manufacturer</h3>
 
 <%= simple_form_for(@manufacturer) do |f| %>
 
@@ -11,7 +11,8 @@
   <% end %>
 
   <%= f.input :name %>
-  <%= f.input :country %>
+  <%= f.label :country %>
+  <%= f.select :country, Manufacturer::COUNTRIES %><br>
   <%= f.button :submit %>
 
 <% end %>

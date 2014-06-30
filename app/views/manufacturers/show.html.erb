@@ -11,7 +11,31 @@
   </div>
 </div>
 
-<h3>Cars</h3>
+<div class="panel panel-warning">
+  <div class="panel-heading">
+    <h3 class="panel-title">Cars</h3>
+  </div>
+  <% if !@cars.empty? %>
+    <% @cars.each do |car| %>
+      <div class="panel-body">
+        <strong>Color: </strong><%= car.color %>
+      </div>
+      <div class="panel-body">
+        <strong>Year: </strong><%= car.year %>
+      </div>
+      <div class="panel-body">
+        <strong>Mileage: </strong><%= car.mileage %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    test
+  </div>
+</div>
+
 
 
 <h3>Submit a new Car</h3>

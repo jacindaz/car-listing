@@ -27,10 +27,15 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 gem 'simple_form'
+gem 'bootstrap-sass'
 
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'pry-rails'
+end
+
+group :production do
+  gem 'rails_12factor'
 end
