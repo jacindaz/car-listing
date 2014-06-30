@@ -3,7 +3,9 @@
   <th><h4>Country</h4></th>
   <% @manufacturers.each do |manufacturer| %>
     <tr>
-      <td><%= manufacturer.name %></td>
+      <td>
+        <%= link_to manufacturer.name, manufacturer_path(manufacturer) %>
+      </td>
       <td><%= manufacturer.country %></td>
     </tr>
   <% end %>

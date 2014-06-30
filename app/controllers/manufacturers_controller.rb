@@ -6,10 +6,13 @@ class ManufacturersController < ApplicationController
 
   def show
     @manufacturer = Manufacturer.find(params[:id])
+    @car = Car.new
+    @car.manufacturer = @manufacturer
   end
 
   def new
     @manufacturer = Manufacturer.new
+
   end
 
   def create

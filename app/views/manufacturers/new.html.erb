@@ -1,8 +1,17 @@
 <h3>Submit a new Car Manufacturer</h3>
 
-<%= simple_form_for @manufacturer do |f| %>
+<%= simple_form_for(@manufacturer) do |f| %>
+
+  <% if @manufacturer.errors.any? %>
+    <ul>
+      <% @manufacturer.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
 
   <%= f.input :name %>
+  <%= f.input :country %>
   <%= f.button :submit %>
 
 <% end %>

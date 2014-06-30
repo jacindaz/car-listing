@@ -1,0 +1,35 @@
+
+<div class="panel panel-warning">
+  <div class="panel-heading">
+    <h3 class="panel-title">Manufacturer</h3>
+  </div>
+  <div class="panel-body">
+    <strong>Manufacturer: </strong><%= @manufacturer.name %>
+  </div>
+  <div class="panel-body">
+    <strong>Country: </strong><%= @manufacturer.country %>
+  </div>
+</div>
+
+<h3>Cars</h3>
+
+
+<h3>Submit a new Car</h3>
+
+<%= simple_form_for [@manufacturer, @car] do |f| %>
+
+  <% if @car.errors.any? %>
+    <ul>
+      <% @car.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= f.input :color %>
+  <%= f.select :year, (1920..2014).to_a.reverse, include_blank: "Select a Year" %>
+  <%= f.input :mileage %>
+  <%= f.input :description, placeholder: "Describe your car" %>
+  <%= f.button :submit %>
+
+<% end %>
