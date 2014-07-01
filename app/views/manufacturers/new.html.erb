@@ -2,6 +2,7 @@
 
 <%= simple_form_for(@manufacturer) do |f| %>
 
+  <%= f.error_notification %>
   <%= f.input :name %>
   <%= f.input :country, collection: Manufacturer::COUNTRIES, prompt: "Select a country" %><br>
   <%= f.button :submit %>

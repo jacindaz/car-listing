@@ -37,8 +37,20 @@
 
 <%= simple_form_for([@manufacturer, @car]) do |f| %>
 
+  <%= f.error_notification %>
+    <% if @car.errors.messages.present? %>
+      <% @car.errors.messages.each do |field, error| %>
+        <% if field.to_s == "manufacturer_id" %>
+          <h4 style="color:purple;">This car already exists.</h4>
+        <% else %>
+          <h4 style="color:purple;"><%= field.capitalize %> <%= error[0] %></h4>
+        <% end %>
+      <% end %>
+    <% end %>
+
   <%= f.input :color %>
   <%= f.input :year, collection: (1920..2014).to_a.reverse, prompt: "Select a Year" %>
+  <%= f.error :year, message: "Please select a year" %>
   <%= f.input :mileage %>
   <%= f.input :description, placeholder: "Describe your car", required: false %>
   <%= f.button :submit, "Submit Car" %>

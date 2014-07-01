@@ -17,6 +17,7 @@ class CarsController < ApplicationController
   end
 
   def create
+
     @car = Car.new(car_params)
     @manufacturer = Manufacturer.find(params[:manufacturer_id])
     @car.manufacturer = @manufacturer
@@ -25,9 +26,10 @@ class CarsController < ApplicationController
       flash[:notice] = "Car much submitted."
       redirect_to manufacturer_path(@car.manufacturer)
     else
-      flash.now[:notice] = "Much sorry, car very unsaveable."
+      flash[:notice] = "Much sorry, car very unsaveable."
       render :'manufacturers/show'
     end
+
   end
 
   private
