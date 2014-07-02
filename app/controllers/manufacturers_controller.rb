@@ -23,10 +23,10 @@ class ManufacturersController < ApplicationController
     @manufacturer = Manufacturer.new(manufacturer_params)
 
     if @manufacturer.save
-      flash[:notice] = "Your manufacturer has been saved."
+      flash[:manufacturer_notice] = "Your manufacturer has been saved."
       redirect_to manufacturer_path(@manufacturer)
     else
-      flash[:notice] = "Manufacturer couldn't be saved."
+      flash[:manufacturer_error] = "Manufacturer couldn't be saved."
       render :'new'
     end
   end

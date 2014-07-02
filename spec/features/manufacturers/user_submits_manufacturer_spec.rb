@@ -26,7 +26,7 @@ feature 'User submits a new manufacturer' do
 
     click_button 'Create Manufacturer'
 
-    expect(page).to have_content "Name has already been taken"
+    expect(page).to have_content "has already been taken"
   end
 
 end

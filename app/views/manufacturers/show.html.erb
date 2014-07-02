@@ -1,3 +1,11 @@
+<% if flash[:car_notice] || flash[:manufacturer_notice] %>
+  <h3 style="color:purple;"><%= flash[:car_notice] %><%= flash[:manufacturer_notice] %></h3>
+  <hr>
+<% elsif flash[:manufacturer_error] || flash[:car_error] %>
+  <h3 style="color:red;"><%= flash[:manufacturer_error] %><%= flash[:car_error] %></h3>
+  <hr>
+<% end %>
+
 <div class="panel panel-warning">
   <div class="panel-heading">
     <h3 class="panel-title">Manufacturer</h3>

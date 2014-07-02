@@ -40,7 +40,7 @@ feature 'user submits a new car' do
     fill_in 'Description', with: car.description
     click_button 'Submit Car'
 
-    expect(page).to have_content "Name has already been taken"
+    expect(page).to have_content "has already been taken"
   end
 
 end

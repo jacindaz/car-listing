@@ -23,10 +23,10 @@ class CarsController < ApplicationController
     @car.manufacturer = @manufacturer
 
     if @car.save
-      flash[:notice] = "Car much submitted."
+      flash.now[:car_notice] = "Car much submitted."
       redirect_to manufacturer_path(@car.manufacturer)
     else
-      flash[:notice] = "Much sorry, car very unsaveable."
+      flash[:car_error] = "Much sorry, car very unsaveable."
       render :'manufacturers/show'
     end
 
