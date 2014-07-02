@@ -1,0 +1,22 @@
+<div class="panel panel-warning">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= @title %></h3>
+  </div>
+  <div class="panel-body">
+    <strong>Manufacturer: </strong><%= @car.manufacturer.name %>
+  </div>
+  <div class="panel-body">
+    <strong>Color: </strong><%= @car.color %>
+  </div>
+  <div class="panel-body">
+    <strong>Year: </strong><%= @car.year %>
+  </div>
+  <div class="panel-body">
+    <strong>Mileage: </strong><%= @car.mileage %>
+  </div>
+  <% if !@car.description.empty? %>
+    <div class="panel-body">
+      <strong>Description: </strong><%= @car.description %>
+    </div>
+  <% end %>
+</div>

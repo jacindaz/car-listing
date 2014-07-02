@@ -1,0 +1,16 @@
+<h3>Submit a new Manufacturer</h3>
+
+<%= simple_form_for(@manufacturer) do |f| %>
+
+  <%= f.error_notification %>
+    <% if @manufacturer.errors.messages.present? %>
+      <% @manufacturer.errors.messages.each do |field, error| %>
+        <h4 style="color:purple;"><%= field.capitalize %> <%= error[0] %></h4>
+      <% end %>
+    <% end %>
+
+  <%= f.input :name %>
+  <%= f.input :country, collection: Manufacturer::COUNTRIES, prompt: "Select a country" %><br>
+  <%= f.button :submit %>
+
+<% end %>

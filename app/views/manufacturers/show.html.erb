@@ -1,0 +1,66 @@
+<% if flash[:car_notice] || flash[:manufacturer_notice] %>
+  <h3 style="color:purple;"><%= flash[:car_notice] %><%= flash[:manufacturer_notice] %></h3>
+  <hr>
+<% elsif flash[:manufacturer_error] || flash[:car_error] %>
+  <h3 style="color:red;"><%= flash[:manufacturer_error] %><%= flash[:car_error] %></h3>
+  <hr>
+<% end %>
+
+<div class="panel panel-warning">
+  <div class="panel-heading">
+    <h3 class="panel-title">Manufacturer</h3>
+  </div>
+  <div class="panel-body">
+    <strong>Manufacturer: </strong><%= @manufacturer.name %>
+  </div>
+  <div class="panel-body">
+    <strong>Country: </strong><%= @manufacturer.country %>
+  </div>
+</div>
+
+<div class="panel panel-warning">
+  <div class="panel-heading">
+    <h3 class="panel-title">Cars</h3>
+  </div>
+  <% if !@cars.nil? %>
+    <% @cars.each do |car| %>
+      <div class="panel-body">
+        <strong>Color: </strong><%= car.color %>
+      </div>
+      <div class="panel-body">
+        <strong>Year: </strong><%= car.year %>
+      </div>
+      <div class="panel-body">
+        <strong>Mileage: </strong><%= car.mileage %>
+      </div>
+    <% end %>
+    <% elsif @cars.nil? %>
+      <p>There are no cars listed for this manufacturer.</p>
+  <% end %>
+</div>
+
+<br>
+
+<h3>Submit a new Car</h3>
+
+<%= simple_form_for([@manufacturer, @car]) do |f| %>
+
+  <%= f.error_notification %>
+    <% if @car.errors.messages.present? %>
+      <% @car.errors.messages.each do |field, error| %>
+        <% if field.to_s == "manufacturer_id" %>
+          <h4 style="color:purple;">This car already exists.</h4>
+        <% else %>
+          <h4 style="color:purple;"><%= field.capitalize %> <%= error[0] %></h4>
+        <% end %>
+      <% end %>
+    <% end %>
+
+  <%= f.input :color %>
+  <%= f.input :year, collection: (1920..2014).to_a.reverse, prompt: "Select a Year" %>
+  <%= f.error :year, message: "Please select a year" %>
+  <%= f.input :mileage %>
+  <%= f.input :description, placeholder: "Describe your car", required: false %>
+  <%= f.button :submit, "Submit Car" %>
+
+<% end %>
