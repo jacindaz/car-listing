@@ -6,7 +6,11 @@ class ManufacturersController < ApplicationController
 
   def show
     @manufacturer = Manufacturer.find(params[:id])
-    @cars = Car.where(manufacturer_id: @manufacturer.id)
+
+    # both do the same thing, uncommented way is better
+    # @cars = Car.where(manufacturer_id: @manufacturer.id)
+    @cars = @manufacturer.cars
+
     @car = Car.new
     @car.manufacturer = @manufacturer
   end

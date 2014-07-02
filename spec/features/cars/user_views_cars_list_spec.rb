@@ -1,7 +1,7 @@
 feature 'user views the list of cars' do
 
   scenario 'user views the list of all cars' do
-    cars = FactoryGirl.create(:car, 3)
+    cars = FactoryGirl.create_list(:car, 3)
 
     visit cars_path
 

@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :manufacturer do
-    name "BMW"
+    sequence(:name) {|n| "manufacturer #{n}"}
     country "Germany"
   end
 

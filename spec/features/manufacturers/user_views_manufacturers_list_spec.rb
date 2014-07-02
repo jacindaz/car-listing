@@ -7,7 +7,7 @@ feature 'user views a list of manufacturers' do
     manufacturer = FactoryGirl.create(:manufacturer)
     visit manufacturers_path
 
-    expect(page).to have_content "BMW"
+    expect(page).to have_content manufacturer.name
     expect(page).to have_content "Germany"
 
   end
